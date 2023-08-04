@@ -34,6 +34,21 @@ class ScriptPlayer(val player: Player) : ScriptEntity(player), ScriptAudience {
     val username: String = player.username
 
     @ScriptableExport
+    fun playSound(sound: ScriptSound) {
+        player.playSound(sound.sound)
+    }
+
+    @ScriptableExport
+    fun playSound(sound: ScriptSound, position: ScriptPos) {
+        player.playSound(sound.sound, position.toPosition())
+    }
+
+    @ScriptableExport
+    fun stopSound(sound: ScriptSound) {
+        player.stopSound(sound.sound)
+    }
+
+    @ScriptableExport
     override fun toString() = "ScriptPlayer(uuid=${entity.uuid})"
 
 }

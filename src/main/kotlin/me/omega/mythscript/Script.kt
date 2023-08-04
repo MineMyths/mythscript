@@ -8,6 +8,7 @@ import me.omega.mythscript.types.*
 import net.minestom.server.entity.Entity
 import net.minestom.server.entity.Player
 import net.minestom.server.potion.PotionEffect
+import net.minestom.server.sound.SoundEvent
 import org.graalvm.polyglot.Context
 import org.graalvm.polyglot.PolyglotException
 import org.slf4j.Logger
@@ -45,6 +46,9 @@ class Script(val content: String = "", val uuid: SerializableUUID = UUID.randomU
 
             PotionEffect.values().forEach {
                 objects["PotionEffect_${it.name()}"] = it
+            }
+            SoundEvent.values().forEach {
+                objects["Sound_${it.name()}"] = it
             }
         }
     }

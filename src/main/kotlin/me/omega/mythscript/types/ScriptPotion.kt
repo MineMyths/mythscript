@@ -11,13 +11,9 @@ data class ScriptPotion(
 
     companion object {
 
+        @JvmOverloads
         @ScriptableExport
-        fun new(effect: PotionEffect, amplifier: Byte, duration: Int): ScriptPotion {
-            return new(effect, amplifier, duration, 0)
-        }
-
-        @ScriptableExport
-        fun new(effect: PotionEffect, amplifier: Byte, duration: Int, flags: Byte): ScriptPotion {
+        fun new(effect: PotionEffect, amplifier: Byte, duration: Int, flags: Byte = 0): ScriptPotion {
             return ScriptPotion(Potion(effect, amplifier, duration, flags))
         }
 
