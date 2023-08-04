@@ -2,6 +2,7 @@ package me.omega.mythscript.types
 
 import me.omega.mythscript.access.ScriptableExport
 import net.minestom.server.entity.Entity
+import net.minestom.server.potion.PotionEffect
 
 open class ScriptEntity(val entity: Entity) : ScriptTickable(entity) {
 
@@ -116,6 +117,16 @@ open class ScriptEntity(val entity: Entity) : ScriptTickable(entity) {
     @ScriptableExport
     fun nearestEntity(distanceCap: Double = Double.MAX_VALUE): ScriptEntity? =
         nearestEntities(distanceCap)?.first()
+
+    @ScriptableExport
+    fun applyPotionEffect(potion: ScriptPotion) {
+        entity.addEffect(potion.potion)
+    }
+
+    @ScriptableExport
+    fun removePotionEffect(effect: PotionEffect) {
+        entity.removeEffect(effect)
+    }
 
     override fun toString() = "ScriptEntity(path=${entity.entityType.namespace().path}, uuid=${entity.uuid})"
 
